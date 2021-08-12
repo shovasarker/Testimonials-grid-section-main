@@ -1,0 +1,184 @@
+
+.container {
+    height: 100%;
+    padding: 72px 24px 72px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(237, 242, 248);    
+    
+    @include breakpoint-fixed-up(1280px){
+        height: 100vh;
+        padding: 0;
+    }
+}
+
+.grid {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @include breakpoint-fixed-up(500px){
+        width: 450px;
+    }
+
+
+    @include breakpoint-up(large){
+        width: 700px;
+    }
+
+
+    @include breakpoint-fixed-up(1280px){
+        width: 1140px;
+    }
+
+    @include breakpoint-up(large){
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, auto);
+        grid-template-areas: 
+        "item1 item1"
+        "item2 item5"
+        "item3 item5"
+        "item4 item4";
+    }
+
+    @include breakpoint-fixed-up(1280px) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: 
+        "item1 item1 item2 item5"
+        "item3 item4 item4 item5";
+    }
+
+    &__item {
+        padding: 26px 36px 32px 32px;
+        border-radius: 10px;
+
+
+
+        &.item1 {
+            background: url('../images/bg-pattern-quotation.svg'), $moderateViolet;
+            background-repeat: no-repeat;
+            background-position: 85% 0%;
+
+            @include breakpoint-up(large){
+                grid-area: item1;
+                background-position: 80% 0%;
+            }
+        }
+        &.item2 {
+            background-color: $veryDarkGrayishBlue;
+
+            @include breakpoint-up(large){
+                grid-area: item2;
+            }
+            .grid {
+                &__header img {
+                    border: none;
+                }
+            }
+        }
+
+        &.item3 {
+            @include breakpoint-up(large){
+                grid-area: item3;
+            }
+        }
+        &.item5 {
+            @include breakpoint-up(large){
+                grid-area: item5;
+            }
+        }
+
+        &.item3, &.item5 {
+            background-color: $white;
+            padding-right: 32px;
+            .grid {
+                &__header img {
+                    border: none;
+                }
+
+                &__name {
+                    color: $veryDarkGrayishBlue;
+                }
+                &__title {
+                    color: rgba($color: $veryDarkGrayishBlue, $alpha: 0.5);
+                }
+
+                &__comment {
+                    color: $veryDarkGrayishBlue;
+                    font-weight: 700;
+                }
+
+                &__quote {
+                    color: rgba($color: $veryDarkGrayishBlue, $alpha: 0.7);
+                }
+            }
+        }
+
+
+        &.item4 {
+            background-color: $veryDarkBlackishBlue;
+
+            @include breakpoint-up(large){
+                grid-area: item4;
+            }
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+        img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid rgb(167, 117, 242);
+            margin-right: 16px;
+        }
+        &-name {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+    }
+
+    &__image {
+        // padding: 1.5px;
+        // width: 32px;
+        // height: 32px;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        // border-radius: 50%;
+        // background-color: rgb(167, 117, 242);
+
+    }
+
+    &__name {
+        color: $lightGray;
+    }
+
+    &__title {
+        font-size: 11px;
+        color: rgba($color: $lightGray, $alpha: 0.5);
+    }
+
+    &__comment {
+        font-size: 20px;
+        color: $lightGrayishBlue;
+        margin-bottom: 16px;
+    }
+
+    &__quote {
+        font-size: 14px;
+        line-height: 19px;
+        color: rgba($color: $lightGray, $alpha: 0.7);
+    }
+
+
+}
